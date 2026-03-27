@@ -51,3 +51,29 @@ pip install pandas duckdb
 ```Bash
 python ingestion/load_orders.py
 ```
+---
+## Reflexão Final
+
+**1. Onde está o dado bruto neste projeto?**
+O dado bruto está localizado no arquivo CSV em `data/raw/orders_2026_03_23.csv`. Em um pipeline de dados real, esta pasta representa a "Landing Zone" ou camada "Bronze", onde os dados chegam em seu estado original.
+
+**2. Qual é o papel do script Python no fluxo?**
+O script Python (`load_orders.py`) atua como o **Orquestrador do Pipeline**. Ele é responsável por:
+* Validar a existência do arquivo de entrada.
+* Ler e carregar os dados brutos na memória usando o Pandas.
+* Estabelecer a conexão com o banco de dados DuckDB.
+* Executar os comandos SQL de transformação (tipagem de dados) e carga.
+* Gerar o relatório final de agregação para validação.
+
+**3. O que aconteceria se uma coluna do CSV mudasse de nome?**
+O pipeline quebraria com um erro de execução. Como o script utiliza comandos SQL (`CAST(coluna AS TIPO)`), o DuckDB não encontraria o nome da coluna antiga referenciada no código. Isso demonstra a necessidade de implementarmos **Contratos de Dados** no futuro para garantir a resiliência do pipeline.
+
+**4. Por que o primeiro commit no Git é importante?**
+O primeiro commit estabelece a **Baseline** (linha de base) do projeto. Ele garante que temos uma versão funcional e estável registrada, permitindo que, caso as próximas evoluções apresentem bugs, possamos realizar um **Rollback** (retorno) para este estado conhecido e seguro.
+
+**5. O pipeline funciona, mas ele já pode ser considerado confiável para produção?**
+Ainda não. Embora seja funcional, para ser "Production-Ready" (pronto para produção) sob a ótica de DataOps, ele precisaria de:
+* **Testes de Qualidade:** Validar se há valores nulos ou valores de venda negativos.
+* **Logging e Monitoramento:** Registrar erros de forma automática.
+* **Agendamento:** Uma forma de rodar o script sem intervenção manual.
+* **Tratamento de Erros:** Mensagens mais amigáveis e recuperação de falhas se o arquivo CSV vier corrompido.
