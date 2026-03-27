@@ -1,17 +1,17 @@
-# DataOps Mini Lab - Pipeline de Pedidos 
+# DataOps Mini Lab - Pipeline de pedidos 
 
 Este repositório contém a primeira versão de um pipeline de dados funcional, desenvolvido como parte do aprendizado de práticas de **DataOps**. O objetivo principal é realizar a ingestão de dados brutos (CSV) para uma base analítica local utilizando **DuckDB**.
 
-## 📋 Cenário
+## Cenário
 Uma empresa recebe diariamente arquivos CSV com dados de pedidos. O pipeline processa esses arquivos, realiza a tipagem dos dados e persiste em uma camada de warehouse para consultas rápidas e agregações de status.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias utilizadas
 * **Python 3.11+**
 * **Pandas**: Para manipulação e leitura dos dados brutos.
 * **DuckDB**: Banco de dados OLAP in-process para armazenamento e consultas SQL.
 * **Git**: Versionamento de código.
 
-## Estrutura do Projeto
+## Estrutura do projeto
 ```text
 dataops-mini-lab/
 ├── data/
