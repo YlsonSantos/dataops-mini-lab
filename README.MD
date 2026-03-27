@@ -52,7 +52,7 @@ pip install pandas duckdb
 python ingestion/load_orders.py
 ```
 ---
-## Reflexão Final
+## Reflexão final
 
 **1. Onde está o dado bruto neste projeto?**
 O dado bruto está localizado no arquivo CSV em `data/raw/orders_2026_03_23.csv`. Em um pipeline de dados real, esta pasta representa a "Landing Zone" ou camada "Bronze", onde os dados chegam em seu estado original.
