@@ -23,6 +23,7 @@ dataops-mini-lab/
 │   └── local.duckdb        # Base de dados local (gerada na execução)
 ├── .gitignore              # Arquivos ignorados pelo Git (.venv, .duckdb)
 └── README.md
+```
 
 ## 1. Clone o repositório:
 
